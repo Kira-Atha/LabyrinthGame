@@ -1,0 +1,86 @@
+<html lang="FR">
+<head>
+    <meta name="author" content="HUYGEBAERT Amandine">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/common.js"></script>
+    <script src="js/script.js" defer></script>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="imgs/42.png" />
+    <meta charset="UTF-8">
+    <title>Labyrinthe</title>
+</head>
+<body>
+    <div class="header">
+        <p>Labyrinthe</p>
+    </div>
+    <div id="content">
+        <div id="login">
+            <fieldset>
+                <legend>Se connecter</legend>
+                    <p>Identifiant  <input type="text" id="identifiant_log" ></p>
+                    <p>Password  <input type="password" id="password_log"></p>
+                    <button id="button_reg" onclick="disp_register()">S'inscrire</button>
+                    <button id="button_log" onclick="login()">Connexion</button>
+                    <p>Choisissez un thème
+                        <select id="theme" onchange="recup_theme()">
+                            <option value="BLUE">Bleu</option>
+                            <option value="GREEN">Vert</option>
+                            <option value="BRICK">Brique</option>
+                        </select>
+                    </p>
+            </fieldset>
+        </div>
+        <div id="register">
+            <fieldset>
+                <legend>S'inscrire</legend>
+                    <p>Identifiant : <input type="text" id="identifiant_reg" onkeyup="test_reg_register()"></p>
+                    <p>Password : <input type="password" id="password_reg" onkeyup="test_reg_register()"></p>
+                    <p>E-mail : <input type="text" id="mail_reg" onkeyup="test_reg_register()"></p>
+                    <button id="button_reg_test" onclick="test_bdd_register()">Valider inscription</button>
+                    <button id="button_cancel" onclick ="cancel_register()">Annuler inscription</button>
+            </fieldset>
+        </div>
+        <div id="game">
+            <fieldset>
+                <legend>Labyrinthe</legend>
+                    <canvas id="lab" width=320 height=200 style="width : 640px; height:400px"></canvas>
+                    <div id="controller_top">
+                        <img id="turn_left" src="imgs/iu/turnleft.png" onclick="go_turnL()">
+                        <img id="up" src="imgs/iu/movefwd.png" onclick="go_up()">
+                        <img id="turn_right" src="imgs/iu/turnright.png" onclick="go_turnR()">
+                    </div>
+                    <div id="controller_bottom">
+                        <img id="left" src="imgs/iu/moveleft.png" onclick="go_left()">
+                        <img id="down" src="imgs/iu/moveback.png" onclick="go_down()">
+                        <img id="right" src="imgs/iu/moveright.png" onclick="go_right()">
+                    </div>
+                <div id="pos">Veuillez appuyer sur une flèche pour changer de position.</div>
+                <div id="compass_div">
+                    <img id="compass" src="imgs/iu/compass-N.png">
+                </div>
+            </fieldset>
+            <input type="text" id="chat_send" size="100" maxlength="50" onkeyup="msg_upperCase()">
+            <button id="button_send_msg" onclick="send_msg()">Envoyer</button>
+            <button id="logout" onclick="logout()">Déconnexion</button>
+            <button id="again" onclick="again()">Recommencer</button>
+            <div id="chat">
+                Bonjour et bienvenue ! Interagissez avec les autres connectés :-)
+                <select id="typeMsg" onchange="chatSelect()">
+                    <option value="2">Hurler</option>
+                    <option value="1">Parler</option>
+                    <option value="0">Chuchoter</option>
+                </select>
+                <div id="p_msg_send"></div>
+            </div>
+        </div>
+        <div id="error"></div>
+        <div id="error_psw"></div>
+        <div id="error_mail"></div>
+    </div>
+    <div class="footer">
+        <p> HUYGEBAERT AMANDINE <br>
+            MCB - BAC - INFORMATIQUE DE GESTION<br>
+            AJAX 2020-2021</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+********
+* /PHP *
+********
+	*************
+	* again.php *
+	*************
+*************************
+* Paramètre(s) d'entrée *
+*************************
+	/
+
+**********
+* Sortie *
+**********
+	Nouvelles positions réinitialisées à 1;1;0
+
+
+	****************
+	* chat_bdd.php *
+	****************
+*************************
+* Paramètre(s) d'entrée *
+*************************
+	Le message envoyé et le type de message 
+
+**********
+* Sortie *
+**********
+	"N_OK" si le message est vide.
+	"OK" si le message contient quelque chose
+
+
+	*********************
+	* chat_disp_bdd.php *
+	*********************
+*************************
+* Paramètre(s) d'entrée *
+*************************
+	/
+
+**********
+* Sortie *
+**********
+	Informations liées aux messages récupérés dans la base de données en XML sous ce format choisi :
+<Racine>
+	<MsgContent>
+		<Auteur> ... </Auteur>
+		<Message> ... </Message>
+		<Ts> ... </Ts>
+	</MsgContent>
+</Racine>
+
+Chaque message = 1 <MsgContent>...</MsgContent>
+
+	*****************
+	* chuchoter.php *
+	*****************
+
+*************************
+* Paramètre(s) d'entrée *
+*************************
+	Message envoyé, le destinataire
+
+**********
+* Sortie *
+**********
+	Vérification si ça a été stocké ou non dans la BDD.	
+
+	*************
+	* login.php *
+	*************
+*************************
+* Paramètre(s) d'entrée *
+*************************
+	Login, mot de passe
+
+**********
+* Sortie *
+**********
+	"OK" + le login ( pour afficher près du bouton de déconnexion )=> Tests OK
+	"N_OK" => MDP incorrect
+	"N_OK2" => Requête ne donne rien
+
+	****************
+	* register.php *
+	****************
+*************************
+* Paramètre(s) d'entrée *
+*************************
+	Login, mot de passe, e-mail.
+
+**********
+* Sortie *
+**********
+	"OK" => Utilisateur n'existe pas, login et mot de passe bien stocké.
+	"N_OK" => Utilisateur existe déjà.
+_______________________________________________
+	*************
+	* /PHP/MOVE *
+	*************
+La modification de X ou Y dépend du mouvement souhaité.
+
+		**********************
+		* go_"direction".php *
+		**********************
+*************************
+* Paramètre(s) d'entrée *
+*************************
+	/
+
+**********
+* Sortie *
+**********
+        //////////////////
+	/ Différents cas /
+	//////////////////
+Case souhaitée est un mur (extrémités comprises) 
+		sortie => "N_OK" : permet d'afficher un message d'erreur et ne fait rien.
+Case souhaitée n'est pas un mur (se déplacer d'une case)
+	Case courante est un escalier montant (Z+1)
+		sortie => nouvelles positions de x,y,z, le type de la case ( affichage ), infoMoveJS (personnalisation du message à l'utilisateur)
+	Case courante est un escalier descendant (Z-1)
+		sortie => nouvelles positions de x,y,z, le type de la case ( affichage ), infoMoveJS (personnalisation du message à l'utilisateur)
+	Case courante est une porte
+		=> Si la case qui suit n'est pas un mur, se déplacer de un supplémentaire.
+			sortie => nouvelles positions de x,y,z, le type de la case ( affichage ), infoMoveJS (personnalisation du message à l'utilisateur)
+	Case courante est un couloir.
+		sortie => nouvelles positions de x,y,z, le type de la case ( affichage )
